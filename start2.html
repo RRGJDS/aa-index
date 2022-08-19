@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동물인식퀴즈-사자</title>
+</head>
+<body>
+    <br>
+    <br>동물인식퀴즈-사자</p> <br>
+
+    <div id="TQ">
+
+
+    </div>
+<div id="TA">
+
+</div>
+
+<script>
+    // var Q_id, A_id; 
+    var AA, score;
+    var startNum, enaNum;
+    var problem = ['L1.png', 'L2.png' ];
+    var answer = ['X', 'O' ];
+
+    function reset(){
+
+    startNum = 0;
+    enaNum = 2;
+    score = 0;
+
+        setQ();
+
+    }
+    reset();
+    function setQ(){
+        TQ.innerHTML = "<img src =' ./img/"+problem[startNum]+"'";
+
+        if(startNum==enaNum){
+            TA.innerHTML = "<button type = 'button' onclick = 'BT_r_C()'> 결과보기</button>"
+        }
+
+        else{
+            TA.innerHTML = "<button type = 'button' onclick='BT_O_C()'>O</button><br><br><button type = 'button' onclick='BT_X_C()'>X </button> "
+        }
+    }
+
+function BT_O_C(){
+    AA = 'O' ;
+    if(answer[startNum]==AA){
+        scort++;
+    }
+    startNum++;
+    setQ();
+
+    function BT_X_C(){
+    AA = 'X' ;
+    if(answer[startNum]==AA){
+        score++;
+    }
+    startNum++;
+    setQ();
+    }
+
+    function BT_r_C(){
+        alert("당신의 점수는 "+score+"입니다");
+        location.href='index.html'
+    }
+
+}
+
+
+</script>
+
+
+</body>
+</html>

@@ -4,38 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>동물원 퀴즈</title>
+    <title>동물인식퀴즈</title> 
     <script>
         var ST = 0;
         var T;
+
     </script>
 </head>
 <body>
-    <div>동물을 보여주세요!</div><br>
-    <button type="button" onclick="
-    if(ST==0){
-        ST += 1;
-        init()
-    }
-    else{
-        alert('이미 처리된 명령입니다.');
-    }
-    ">시작</button> <br><br>
-    
-    <button type="button" onclick="
-    if(T==0){
-        location.href='stsrt.html'
-    }
-    else if(T==1){
-        location.href='22.html'
-    }
-    else if(T==2){
-        location.href='33.html'
-    }
-    else{
-        alert('동물이 인식되지 않았습니다.');
-    }
-    ">퀴즈 맞추러 가기</button>
+    <div>동물을 보여주세요!</div><br> 
+<button type="button" onclick= "
+
+if(ST==0){
+    ST+=1;
+    init()
+} 
+else {
+alert('이미 처리된 명령입니다.');
+}
+">시작 </button> <br> <br>
+<button type="button" onclick=" 
+if(T==0){
+    location.href='start.html'
+}
+else if (T==1) {
+location.href='start2.html'
+}
+else if (T==2){
+location.href='start3.html'
+}
+else{
+    alert('동물이 인식되지 않았습니다.');
+}
+" > 퀴즈 맞추러가기 </button>
+
 
 
 
@@ -90,6 +92,10 @@
     async function predict() {
         // predict can take in an image, video or canvas html element
         const prediction = await model.predict(webcam.canvas);
+        // for (let i = 0; i < maxPredictions; i++) {
+        //     const classPrediction =
+        //         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+        //     labelContainer.childNodes[i].innerHTML = classPrediction;
         if(prediction[0].className=="tiger" && prediction[0].probability.toFixed(2) >= 0.80){
             labelContainer.childNodes[0].innerHTML = "호랑이";
             T=0;
@@ -106,7 +112,10 @@
             labelContainer.childNodes[0].innerHTML = "인식할 수 없습니다. 조금 더 가까이 찍어주세요.";
             T=3;
         }
-    }
+        }
+    
 </script>
+
+    
 </body>
 </html>
